@@ -10,7 +10,8 @@ export class Colors extends Component {
         this.state = {
             step: 0,
             difficulty: null,
-            colors: null
+            colors: [],
+            selectedColors: []
         }
     }
 
@@ -19,21 +20,17 @@ export class Colors extends Component {
     }
 
     changeDifficulty = (value) => {
-        this.setState({ difficulty: value })
-        this.getColors();
-    }
-
-    teste = () => {
-        console.log(this.state.step);
-        this.changeState("step", 0);
-        console.log(this.state.step);
+        this.setState({ difficulty: value }, () => {
+            this.getColors();
+        })
     }
 
     getColors = () => {
         var service = new Service();
+        const { difficulty } = this.state;
 
         service
-            .get("/colors")
+            .get(`/colors?d=${difficulty}`)
             .then(res => {
                 this.setState({ colors: res.colors, step: 1 })
             })
@@ -49,9 +46,9 @@ export class Colors extends Component {
             case 0:
                 return <SelectDifficulty changeDifficulty={this.changeDifficulty} />
             case 1:
-                return <ShowColors changeDifficulty={this.changeDifficulty} />
+                return <ShowColors colors={this.state.colors} changeStep={this.changeStep} />
             case 2:
-                return <SelectColors changeDifficulty={this.changeDifficulty} />
+                return <SelectColors changeStep={this.changeStep} colors={this.state.colors} difficulty={this.state.difficulty} />
             default:
                 return <SelectDifficulty changeDifficulty={this.changeDifficulty} />
         }

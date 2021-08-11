@@ -7,7 +7,7 @@ export default function SelectDifficulty(props) {
             <Typography variant="h4">
                 Select Your difficulty
             </Typography>
-            <Box maxWidth display="flex" alignItems="center" justifyContent="space-between" style={{width: "100%", padding: "20px 50px"}}> 
+            <Box display="flex" alignItems="center" justifyContent="space-between" style={{width: "100%", padding: "20px 50px"}}> 
                 <Button variant="contained" color="primary" onClick={() => props.changeDifficulty("easy")}>
                     Easy
                 </Button>

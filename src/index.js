@@ -1,24 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Router from './Router';
-import { createMuiTheme, ThemeProvider } from '@material-ui/core';
+import { createTheme, ThemeProvider } from '@material-ui/core';
 
-const theme = createMuiTheme({
+const theme = createTheme({
   palette: {
     primary: {
       main: '#457b9d',
     },
     secondary: {
-      main: '#EBEBEB',
-    },
-    title: {
-      main: "#FFF"
-    },
-    text: {
-      main: "#4d4d4d"
-    },
-    error: {
-      main: "#db0000"
+      main: '#9f6fd7',
     }
   },
 });
